@@ -111,37 +111,25 @@ def tobs(tobs):
 
     return jsonify(all_tobs)
 
-# @app.route("/api/v1.0/<start>")
-# def start(start):
-#     # Create our session (link) from Python to the DB
-#     session = Session(engine)
+@app.route("/api/v1.0/<start>")
+def start(start):
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
-#     """Return a list of all passenger names"""
-#     # Query all passengers
-#     results = session.query(Hawaii.name).all()
+    # Query results after 8-23-16
+    start_date = [Measurement.date, 
+          func.avg(Measurement.tobs),
+          func.max(Measurement.tobs),
+          func.min(Measurement.tobs)]
+                  
+    start_date = session.query(*start_date).filter(Measurement.date >= "2016-08-23").all()
 
-#     session.close()
 
-#     # Convert list of tuples into normal list
-#     all_names = list(np.ravel(results))
+    session.close()
 
-#     return jsonify(all_names)
 
-# @app.route("/api/v1.0/<start>/<end>")
-# def startend(startend):
-#     # Create our session (link) from Python to the DB
-#     session = Session(engine)
+    return jsonify(start_date)
 
-#     """Return a list of all passenger names"""
-#     # Query all passengers
-#     results = session.query(Hawaii.name).all()
-
-#     session.close()
-
-#     # Convert list of tuples into normal list
-#     all_names = list(np.ravel(results))
-
-#     return jsonify(all_names)
 
 
 if __name__ == '__main__':
