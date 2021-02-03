@@ -4,4 +4,4 @@ Analysis of Hawaii climate station data
 
 Tools:  SQLAlchemy and Jupyter Notebook
 
-![pic]()
+![pic](https://github.com/brookecrofts/Hawaii-climate-analysis/blob/master/Resources/Hawaii_analysis_example.PNG)
