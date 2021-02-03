@@ -1,2 +1,2 @@
-# sqlalchemy-challenge
+# sqlalchemy
 Hawaii climate analysis
